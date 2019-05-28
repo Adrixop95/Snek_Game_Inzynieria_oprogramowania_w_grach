@@ -61,42 +61,30 @@ namespace Snake.Forms {
 
         // ######################################################################
         private void ButtonStartGame_Click( object sender, EventArgs e ) {
-            DrawBackground( 10, 10, Properties.Resources.apple );
+            Draw( Background( 10, 10, Properties.Resources.grass ) );
         }
 
         // ######################################################################
-        public void ClearScreen() {
-            var g   =   this.pictBox.CreateGraphics();
-            g.FillRectangle( Brushes.Black, this.pictBox.DisplayRectangle );
+        public Bitmap Background( int width, int height, Image block ) {
+            int imageWidth  =   block.Width * width;
+            int imageHeight =   block.Height * height;
+            var format      =   PixelFormat.Format32bppArgb;
+            var bitmap      =   new Bitmap( imageWidth, imageHeight, format );
+            var graphics    =   Graphics.FromImage( bitmap );
 
-            var p   =   new Pen( new SolidBrush( Color.Red ), 5 );
-            g.DrawLine( p, 390, 37, 256, 436 );
-            g.DrawLine( p, 256, 436, 604, 183 );
-            g.DrawLine( p, 604, 183, 175, 183 );
-            g.DrawLine( p, 175, 183, 523, 436 );
-            g.DrawLine( p, 523, 436, 390, 37 );
-        }
-
-        // ----------------------------------------------------------------------
-        public void DrawBackground( int width, int height, Image block ) {
-            int imageWidth = block.Width * width;
-            int imageHeight = block.Height * height;
-            Bitmap bitmap = new Bitmap( imageWidth, imageHeight, PixelFormat.Format32bppArgb );
-            Graphics graphics = Graphics.FromImage( bitmap );
             for ( int y = 0; y < height; y++ ) {
                 for ( int x = 0; x < width; x++ ) {
                     graphics.DrawImage( block, new Point( x * block.Width, y * block.Height ) );
                 }
             }
 
-            var g   =   this.pictBox.CreateGraphics();
-            g.DrawImage( bitmap, this.pictBox.DisplayRectangle );
+            return bitmap;
         }
 
         // ----------------------------------------------------------------------
         public void Draw( Bitmap bitmap ) {
-            var g   =   this.pictBox.CreateGraphics();
-            g.DrawImage( bitmap, 0, 0, this.pictBox.Width, this.pictBox.Height );
+            var graphics    =   this.pictBox.CreateGraphics();
+            graphics.DrawImage( bitmap, this.pictBox.DisplayRectangle );
         }
 
         // ######################################################################
