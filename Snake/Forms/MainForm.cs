@@ -13,10 +13,15 @@ namespace Snake.Forms {
 
     public partial class MainForm : Form {
 
+        private GameManager gameManager;
+        private Renderer    renderer;
+
+        #region WindowsForm
         // ######################################################################
         /// <summary> Konstruktor głównego okna aplikacji. </summary>
         public MainForm() {
             InitializeComponent();
+            //gameManager =   new GameManager();
         }
 
         // ----------------------------------------------------------------------
@@ -59,32 +64,33 @@ namespace Snake.Forms {
             //
         }
 
+        #endregion WindowsForm
+        #region Buttons
         // ######################################################################
         private void ButtonStartGame_Click( object sender, EventArgs e ) {
-            Draw( Background( 10, 10, Properties.Resources.grass ) );
+            renderer    =   new Renderer( this.pictBox );
+
+            renderer.Render();
         }
 
+        #endregion Buttons
         // ######################################################################
-        public Bitmap Background( int width, int height, Image block ) {
-            int imageWidth  =   block.Width * width;
-            int imageHeight =   block.Height * height;
-            var format      =   PixelFormat.Format32bppArgb;
-            var bitmap      =   new Bitmap( imageWidth, imageHeight, format );
-            var graphics    =   Graphics.FromImage( bitmap );
-
-            for ( int y = 0; y < height; y++ ) {
-                for ( int x = 0; x < width; x++ ) {
-                    graphics.DrawImage( block, new Point( x * block.Width, y * block.Height ) );
-                }
-            }
-
-            return bitmap;
+        public Size ScaleBlock( int width, int height, Size dest ) {
+            int blockWidth  =   (int) (dest.Width / width);
+            int blockHeight =   (int) (dest.Height / height);
+            return new Size( blockWidth, blockHeight );
         }
 
         // ----------------------------------------------------------------------
-        public void Draw( Bitmap bitmap ) {
+        public void MakeSnake( int x, int y, Image[] blocks ) {
             var graphics    =   this.pictBox.CreateGraphics();
-            graphics.DrawImage( bitmap, this.pictBox.DisplayRectangle );
+            var blockSize   =   ScaleBlock( 20, 20, this.pictBox.Size );
+
+            foreach ( Image block in blocks ) {
+                graphics.DrawImage( block,
+                    new Rectangle( x * blockSize.Width, y * blockSize.Height, blockSize.Width, blockSize.Height ) );
+                x -= 1;
+            }
         }
 
         // ######################################################################
