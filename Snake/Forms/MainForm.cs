@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +75,19 @@ namespace Snake.Forms {
             g.DrawLine( p, 604, 183, 175, 183 );
             g.DrawLine( p, 175, 183, 523, 436 );
             g.DrawLine( p, 523, 436, 390, 37 );
+        }
+
+        // ----------------------------------------------------------------------
+        public void DrawBackground( int width, int height, Image block ) {
+            int imageWidth = block.Width * width;
+            int imageHeight = block.Height * height;
+            Bitmap bitmap = new Bitmap( imageWidth, imageHeight, PixelFormat.Format32bppArgb );
+            Graphics graphics = Graphics.FromImage( bitmap );
+            for ( int y = 0; y < height; y++ ) {
+                for ( int x = 0; x < width; x++ ) {
+                    
+                }
+            }
         }
 
         // ----------------------------------------------------------------------
