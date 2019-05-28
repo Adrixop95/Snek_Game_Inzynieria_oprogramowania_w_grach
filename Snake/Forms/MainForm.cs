@@ -61,7 +61,7 @@ namespace Snake.Forms {
 
         // ######################################################################
         private void ButtonStartGame_Click( object sender, EventArgs e ) {
-            ClearScreen();
+            DrawBackground( 10, 10, Properties.Resources.apple );
         }
 
         // ######################################################################
@@ -85,9 +85,12 @@ namespace Snake.Forms {
             Graphics graphics = Graphics.FromImage( bitmap );
             for ( int y = 0; y < height; y++ ) {
                 for ( int x = 0; x < width; x++ ) {
-                    
+                    graphics.DrawImage( block, new Point( x * block.Width, y * block.Height ) );
                 }
             }
+
+            var g   =   this.pictBox.CreateGraphics();
+            g.DrawImage( bitmap, this.pictBox.DisplayRectangle );
         }
 
         // ----------------------------------------------------------------------
