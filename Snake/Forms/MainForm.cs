@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snake.Renderers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,18 +12,19 @@ using System.Windows.Forms;
 
 namespace Snake.Forms {
 
+    /// <summary> Klasa okna aplikacji. </summary>
     public partial class MainForm : Form {
 
-        private GameManager gameManager;
-        private Renderer    renderer;
+        private Renderer        renderer;
+
 
         #region WindowsForm
         // ######################################################################
         /// <summary> Konstruktor głównego okna aplikacji. </summary>
         public MainForm() {
             InitializeComponent();
-            //gameManager =   new GameManager();
         }
+
 
         // ----------------------------------------------------------------------
         /// <summary> Funkcja wywoływana przy ładowaniu okna aplikacji. </summary>
@@ -34,6 +36,7 @@ namespace Snake.Forms {
             this.Top    =   (int) (screen.Height / 2 - this.Height / 2);
         }
 
+
         // ----------------------------------------------------------------------
         /// <summary> Funkcja wywoływana przy wyświetlaniu okna aplikacji. </summary>
         /// <param name="sender"> Handler obecnej klasy okna aplikacji. </param>
@@ -41,6 +44,7 @@ namespace Snake.Forms {
         private void MainForm_Shown( object sender, EventArgs e ) {
             //
         }
+
 
         // ----------------------------------------------------------------------
         /// <summary> Funkcja wywoływana przed zamknięciem okna aplikacji. </summary>
@@ -56,43 +60,44 @@ namespace Snake.Forms {
             if ( messageBox == DialogResult.No ) e.Cancel = true;
         }
 
+
         // ----------------------------------------------------------------------
         /// <summary> Funkcja wywoływana po zamknięciu okna aplikacji </summary>
         /// <param name="sender"> Handler obecnej klasy okna aplikacji. </param>
         /// <param name="e"> Argumenty zdarzeń funkcji. </param>
         private void MainForm_FormClosed( object sender, FormClosedEventArgs e ) {
-            //
+            renderer = null;
+            GameManager.Destroy();
         }
+
 
         #endregion WindowsForm
         #region Buttons
         // ######################################################################
         private void ButtonStartGame_Click( object sender, EventArgs e ) {
-            renderer    =   new Renderer( this.pictBox );
-
-            renderer.Render();
+            this.buttonStartGame.Text   =   "Restart";
+            renderer                    =   new PictureBoxRenderer( this.pictBox, this.labelPoints );
+            if ( GameManager.Instance != null ) GameManager.Restart();
+            else GameManager.Initialize( new Size( 20, 15 ), 5, renderer );
         }
 
-        #endregion Buttons
-        // ######################################################################
-        public Size ScaleBlock( int width, int height, Size dest ) {
-            int blockWidth  =   (int) (dest.Width / width);
-            int blockHeight =   (int) (dest.Height / height);
-            return new Size( blockWidth, blockHeight );
-        }
 
         // ----------------------------------------------------------------------
-        public void MakeSnake( int x, int y, Image[] blocks ) {
-            var graphics    =   this.pictBox.CreateGraphics();
-            var blockSize   =   ScaleBlock( 20, 20, this.pictBox.Size );
-
-            foreach ( Image block in blocks ) {
-                graphics.DrawImage( block,
-                    new Rectangle( x * blockSize.Width, y * blockSize.Height, blockSize.Width, blockSize.Height ) );
-                x -= 1;
-            }
+        private void ButtonInformations_Click(object sender, EventArgs e) {
+            MessageBox.Show(
+                "Snake Game v1.0" + Environment.NewLine +
+                    "Authors:" + Environment.NewLine +
+                    "Dymarczyk Laura, Dziurka Agata, Karpiński Kamil, Rupala Adrian" + Environment.NewLine +
+                    Environment.NewLine +
+                    "KNI Uniwersytet Śląski 2019",
+                "About",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
+
+        #endregion Buttons
         // ######################################################################
     }
 

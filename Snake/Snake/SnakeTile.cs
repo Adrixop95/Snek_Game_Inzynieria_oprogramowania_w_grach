@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Snake.Snake {
     
-    public enum SnakeTiles {
+    public enum SnakeTile {
         HEAD    =   0,
         BODY    =   1,
         TAIL    =   2

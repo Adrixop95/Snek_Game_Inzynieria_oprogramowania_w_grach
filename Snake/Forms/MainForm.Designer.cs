@@ -30,7 +30,9 @@
         {
             this.fLPanelMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonStartGame = new System.Windows.Forms.Button();
+            this.labelPoints = new System.Windows.Forms.Label();
             this.pictBox = new System.Windows.Forms.PictureBox();
+            this.buttonInformations = new System.Windows.Forms.Button();
             this.fLPanelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox)).BeginInit();
             this.SuspendLayout();
@@ -38,6 +40,8 @@
             // fLPanelMenu
             // 
             this.fLPanelMenu.Controls.Add(this.buttonStartGame);
+            this.fLPanelMenu.Controls.Add(this.buttonInformations);
+            this.fLPanelMenu.Controls.Add(this.labelPoints);
             this.fLPanelMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.fLPanelMenu.Location = new System.Drawing.Point(0, 0);
             this.fLPanelMenu.Margin = new System.Windows.Forms.Padding(0);
@@ -56,6 +60,16 @@
             this.buttonStartGame.UseVisualStyleBackColor = true;
             this.buttonStartGame.Click += new System.EventHandler(this.ButtonStartGame_Click);
             // 
+            // labelPoints
+            // 
+            this.labelPoints.Location = new System.Drawing.Point(244, 4);
+            this.labelPoints.Margin = new System.Windows.Forms.Padding(4);
+            this.labelPoints.Name = "labelPoints";
+            this.labelPoints.Size = new System.Drawing.Size(112, 40);
+            this.labelPoints.TabIndex = 1;
+            this.labelPoints.Text = "Points: 0";
+            this.labelPoints.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // pictBox
             // 
             this.pictBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -64,6 +78,17 @@
             this.pictBox.Size = new System.Drawing.Size(784, 513);
             this.pictBox.TabIndex = 1;
             this.pictBox.TabStop = false;
+            // 
+            // buttonInformations
+            // 
+            this.buttonInformations.Location = new System.Drawing.Point(124, 4);
+            this.buttonInformations.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInformations.Name = "buttonInformations";
+            this.buttonInformations.Size = new System.Drawing.Size(112, 40);
+            this.buttonInformations.TabIndex = 2;
+            this.buttonInformations.Text = "About";
+            this.buttonInformations.UseVisualStyleBackColor = true;
+            this.buttonInformations.Click += new System.EventHandler(this.ButtonInformations_Click);
             // 
             // MainForm
             // 
@@ -92,6 +117,8 @@
         private System.Windows.Forms.FlowLayoutPanel fLPanelMenu;
         private System.Windows.Forms.Button buttonStartGame;
         private System.Windows.Forms.PictureBox pictBox;
+        private System.Windows.Forms.Label labelPoints;
+        private System.Windows.Forms.Button buttonInformations;
     }
 }
 

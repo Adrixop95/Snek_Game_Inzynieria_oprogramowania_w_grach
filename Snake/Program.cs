@@ -7,10 +7,13 @@ using System.Windows.Forms;
 
 namespace Snake {
 
+    /// <summary> Główna klasa programu. </summary>
     static class Program {
 
         static  readonly    string  mutexName   =   "KNI.Snake";
 
+
+        #region Main Functions
         // ######################################################################
         /// <summary> Funkcja uruchamiająca program. </summary>
         [STAThread]
@@ -20,6 +23,7 @@ namespace Snake {
             Application.SetCompatibleTextRenderingDefault( false );
             Application.Run( new Forms.MainForm() );
         }
+
 
         // ----------------------------------------------------------------------
         /// <summary> Funkcja sprawdzająca czy aplikacja jest już uruchomiona. </summary>
@@ -32,6 +36,8 @@ namespace Snake {
             return  !created;
         }
 
+
+        #endregion Main Functions
         // ######################################################################
     }
 
