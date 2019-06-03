@@ -28,4 +28,4 @@ W grze można ponieść porażkę poprzez dobicie do zewnętrznych krawędzi pla
 
 ### Wzorce sekwencjonowania:
 - Metoda aktualizująca - zliczanie wykorzystane podczas kalkulowania punktów.
-- Renderer
+- Renderer - wizualizacja stanu gry, podpięcie assetów, obsługa efektów graficznych.
