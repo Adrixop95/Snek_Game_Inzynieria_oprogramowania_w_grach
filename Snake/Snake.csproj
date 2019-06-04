@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A9D1F4F6-D5B1-4FBE-88C1-CB24CF3BC03C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Snake</RootNamespace>
+    <AssemblyName>Snake</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\Direction.cs" />
+    <Compile Include="Controller\InputManager.cs" />
+    <Compile Include="DataStructure.cs" />
+    <Compile Include="Exceptions\AppleSpawnException.cs" />
+    <Compile Include="Exceptions\InterruptSelfException.cs" />
+    <Compile Include="Exceptions\InterruptAppleException.cs" />
+    <Compile Include="Exceptions\OutOfMapException.cs" />
+    <Compile Include="Forms\FormGameOver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormGameOver.Designer.cs">
+      <DependentUpon>FormGameOver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameManager.cs" />
+    <Compile Include="Libraries\KeyboardHook.cs" />
+    <Compile Include="Map.cs" />
+    <Compile Include="Objects\Apple.cs" />
+    <Compile Include="Observers\Observer.cs" />
+    <Compile Include="Observers\PlayerObserver.cs" />
+    <Compile Include="Observers\PointsObserver.cs" />
+    <Compile Include="Observers\SelfObserver.cs" />
+    <Compile Include="Observers\WallObserver.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\PictureBoxRenderer.cs" />
+    <Compile Include="Renderers\Renderer.cs" />
+    <Compile Include="Snake\SnakeBlock.cs" />
+    <Compile Include="Snake\SnakeTile.cs" />
+    <EmbeddedResource Include="Forms\FormGameOver.resx">
+      <DependentUpon>FormGameOver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\head.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\body.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\terrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Instructions.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

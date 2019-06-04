@@ -1,0 +1,11 @@
+D:\Projects\CSharp\Snek_Game_Inzynieria_oprogramowania_w_grach\Snake\bin\Release\Snake.exe.config
+D:\Projects\CSharp\Snek_Game_Inzynieria_oprogramowania_w_grach\Snake\bin\Release\Snake.exe
+D:\Projects\CSharp\Snek_Game_Inzynieria_oprogramowania_w_grach\Snake\bin\Release\Snake.pdb
+D:\Projects\CSharp\Snek_Game_Inzynieria_oprogramowania_w_grach\Snake\obj\Release\Snake.csprojAssemblyReference.cache
+D:\Projects\CSharp\Snek_Game_Inzynieria_oprogramowania_w_grach\Snake\obj\Release\Snake.Forms.FormGameOver.resources
+D:\Projects\CSharp\Snek_Game_Inzynieria_oprogramowania_w_grach\Snake\obj\Release\Snake.Forms.MainForm.resources
+D:\Projects\CSharp\Snek_Game_Inzynieria_oprogramowania_w_grach\Snake\obj\Release\Snake.Properties.Resources.resources
+D:\Projects\CSharp\Snek_Game_Inzynieria_oprogramowania_w_grach\Snake\obj\Release\Snake.csproj.GenerateResource.cache
+D:\Projects\CSharp\Snek_Game_Inzynieria_oprogramowania_w_grach\Snake\obj\Release\Snake.csproj.CoreCompileInputs.cache
+D:\Projects\CSharp\Snek_Game_Inzynieria_oprogramowania_w_grach\Snake\obj\Release\Snake.exe
+D:\Projects\CSharp\Snek_Game_Inzynieria_oprogramowania_w_grach\Snake\obj\Release\Snake.pdb
