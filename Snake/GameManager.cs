@@ -42,10 +42,10 @@ namespace Snake {
             this.apple  =   new Apple( 1 );
             this.apple.RandomPosition( this.map.FreeFields( this.snake ) );
             this.observers  =   new Observer[4] {
+                new PlayerObserver( this.snake ),
                 new WallObserver( this.map, this.snake ),
                 new SelfObserver( this.snake ),
                 new PointsObserver( this.apple, this.map, this.snake ),
-                new PlayerObserver( this.snake )
             };
             this.renderer   =   renderer;
         }
